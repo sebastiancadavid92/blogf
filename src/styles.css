@@ -3,12 +3,3 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* Solo para navegadores WebKit */
-  }
-  
-  /* text-size-adjust */
-  html, body {
-    -webkit-text-size-adjust: 100%; /* Para navegadores WebKit (Chrome, Safari, etc.) */
-    text-size-adjust: 100%; /* Estándar para Firefox y otros navegadores modernos */
-  }

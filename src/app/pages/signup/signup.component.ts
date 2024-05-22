@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, Validators,FormControl } from '@angular/forms';
 import{RegisterValidators} from '../../shared/validators/namevalidator'
 
+
+
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -18,7 +20,6 @@ export class SignupComponent {
       {
         username: new FormControl('', [Validators.required, Validators.maxLength(50)]),
         email: new FormControl('',[Validators.required,Validators.email]),
-        team:new FormControl('',Validators.maxLength(50)),
         first_name: new FormControl('',[RegisterValidators.isNameValid]),
         last_name: new FormControl('',RegisterValidators.isNameValid),
         birthdate: new FormControl(new Date()),
