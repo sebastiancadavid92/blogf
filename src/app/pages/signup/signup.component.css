@@ -1,5 +1,7 @@
 /* -webkit-tap-highlight-color */
 
+
+
 form {
     display: flex;
     justify-content: center;
@@ -8,7 +10,7 @@ form {
     background-image: url('../../../assets/background.svg');
     
 }
-.bg-white {
+.bgwhite {
     background-color: white;
     padding-left: 30px;
     padding-right: 30px;
@@ -16,6 +18,9 @@ form {
   }
 
 
+.titulo{
+    font-weight: 500;
+}
 
 
 

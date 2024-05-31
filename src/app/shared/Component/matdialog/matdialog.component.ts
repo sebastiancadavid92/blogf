@@ -1,0 +1,53 @@
+
+
+
+import { Component, inject,Input } from '@angular/core';
+import { FormGroup, ReactiveFormsModule, Validators,FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import swal from 'sweetalert2';
+import{SignupComponent} from '../../../pages/signup/signup.component'
+import{Inject} from'@angular/core'
+import {MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
+@Component({
+  selector: 'app-matdialog',
+  standalone: true,
+  imports: [MatDialogModule,MatButtonModule, SignupComponent],
+  templateUrl: './matdialog.component.html',
+  styleUrl: './matdialog.component.css'
+})
+export class MatdialogComponent {
+
+ private loginFlag:boolean;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public dat:{login:boolean },
+  public dialogRef: MatDialogRef<MatdialogComponent>)
+  {
+    this.loginFlag=dat.login
+
+
+  }
+
+  fromChild(event:Event){
+   
+    this.toogle()
+  }
+
+  toogle(){
+    if(this.loginFlag){
+      this.loginFlag=false
+      return
+    }
+    this.loginFlag=true
+  }
+
+  get logingFlag(){
+    return this.loginFlag
+  }
+
+
+
+}
+
