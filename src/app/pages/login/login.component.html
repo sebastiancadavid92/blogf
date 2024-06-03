@@ -57,15 +57,7 @@
           </div>
 
           <div class="sm:col-span-4">
-            <div class="example-container">
-              <mat-form-field>
-                <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'">
-                <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-              </mat-form-field>
-              </div>
+
             
             <label
               for="password"
@@ -73,15 +65,15 @@
               >Password</label
             >
             <div
-              class="mt-2"
+              class="mt-2 flex text-center block w-full rounded-md border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-cyan-700 sm:text-sm sm:leading-6"
+              
               [class.invalid]="password.touched && password.invalid"
             >
-              <input
-                id="password"
-                formControlName="password"
-                type="password"
-                class=" text-center block w-full rounded-md border-0 py-1.5 text-indigo-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-cyan-700 sm:text-sm sm:leading-6"
-              />
+            <input [type]="hide ? 'password' : 'text'" formControlName="password"   class="text-center block w-full rounded-md border-none py-1.5 text-indigo-900 ring-1 ring-inset ring-gray-300 placeholder:text-indigo-400 focus:ring-2 focus:ring-inset focus:ring-cyan-700 sm:text-sm sm:leading-6"
+            >
+            <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
             </div>
             <div>
               @if(password.touched && password.invalid){
@@ -92,6 +84,9 @@
               } }
             </div>
           </div>
+
+
+          
 
           <div class="bg-white mt-6 flex items-center justify-end gap-x-4 mr-20 mb-10 w-full ">
             

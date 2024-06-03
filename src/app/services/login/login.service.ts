@@ -12,7 +12,7 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   login(data:loginData){
-    this.http.post(this.logInUrl,data)
+   return this.http.post(this.logInUrl,data)
   }
 
 

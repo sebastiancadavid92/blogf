@@ -9,3 +9,5 @@
     border-radius: 0.5rem;
     box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.3) ;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
