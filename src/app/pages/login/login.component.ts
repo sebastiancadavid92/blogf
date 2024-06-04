@@ -1,5 +1,5 @@
 
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, Validators,FormControl } from '@angular/forms';
 import{RegisterValidators} from '../../shared/validators/namevalidator'
 import {SingupService}from '../../services/singup/singup.service'
@@ -16,6 +16,8 @@ import {MatIconModule} from '@angular/material/icon';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
+import { Router } from '@angular/router';
+import { MatdialogComponent } from '../../shared/Component/matdialog/matdialog.component';
 
 @Component({
   selector: 'app-login',
@@ -27,8 +29,12 @@ import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 export class LoginComponent {
 
   loginForm:FormGroup;
+  hide = true;
+  invalidForm=true;
+  messangeError='';
+  @Input({required:true}) RefMatDialog?:MatDialogRef<MatdialogComponent>;
   
-  constructor(private logiServ:LoginService)
+  constructor(private logiServ:LoginService, private ruter:Router)
     {
 
     this.loginForm=new FormGroup(
@@ -58,33 +64,58 @@ logIn(){
   if (this.loginForm.valid)
   {
 
-    alert('los datos  SI son vlaidos')
+
     this.logiServ.login({username:this.email.value, password:this.password.value}).subscribe({
       next:(result)=>{
-        console.log(result)
+        swal.fire({
+          icon: "success",
+          title: "New user registered successfully",
+          showConfirmButton: false,
+          timer: 1000
+        });
+        this.RefMatDialog?.close()
+        this.ruter.navigate([''])
+        
+        
       },
       error:(err)=>{
-        if(err.error){
-          
+ 
+        if(err.error.error==='invalid credentials'){
+
+         this.messangeError='Invalid credentials, please check your eamil and passowrd and try again'
+        
+        }
+        else if (err.status == 403){
+          this.messangeError='Logged in users, are not allow to use this action'
+        }
+        else{
+          this.messangeError='Unspected error. contact to client service'
 
         }
-        console.log(err)
-        alert(JSON.stringify(err))
+
+        swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
+
+
       }
     })
 
   }
 
   else{
-    debugger;
-    alert('datos no son vlaidos')
+    this.invalidForm=false;
+    this.loginForm.markAllAsTouched()
+
   }
 
   
   
 }
 
-hide = true;
+
 clickEvent(event: MouseEvent) {
   this.hide = !this.hide;
   event.stopPropagation();

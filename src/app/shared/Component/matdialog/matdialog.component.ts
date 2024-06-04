@@ -10,11 +10,12 @@ import{SignupComponent} from '../../../pages/signup/signup.component'
 import{Inject} from'@angular/core'
 import {MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { LoginComponent } from '../../../pages/login/login.component';
 
 @Component({
   selector: 'app-matdialog',
   standalone: true,
-  imports: [MatDialogModule,MatButtonModule, SignupComponent],
+  imports: [MatDialogModule,MatButtonModule, SignupComponent, LoginComponent],
   templateUrl: './matdialog.component.html',
   styleUrl: './matdialog.component.css'
 })
