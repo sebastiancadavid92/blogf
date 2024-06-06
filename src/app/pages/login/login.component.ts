@@ -1,13 +1,10 @@
 
-import { Component, inject, Input } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, Validators,FormControl } from '@angular/forms';
-import{RegisterValidators} from '../../shared/validators/namevalidator'
-import {SingupService}from '../../services/singup/singup.service'
-import { Subscription } from 'rxjs';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import swal from 'sweetalert2';
-import{Inject} from'@angular/core'
-import {MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+
+import {MatDialogRef} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {LoginService} from '../../services/login/login.service'
 
