@@ -25,4 +25,12 @@ export interface User {
   team_id?:number
 }
 
+export interface authUser{
+  username:string,
+  id:number,
+  teamName:string,
+  teamId:number
+
+}
+
 

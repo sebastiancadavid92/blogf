@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BpostComponent } from '../../shared/Component/bpost/bpost.component';
 import {Post}from'../../shared/models/post'
-import { ListpostService } from '../../services/listpost/listpost.service';
+import { PostService } from '../../services/post/post.service';
 import { BpostlistComponent } from '../../shared/Component/bpostlist/bpostlist.component';
 
 
@@ -14,25 +14,14 @@ import { BpostlistComponent } from '../../shared/Component/bpostlist/bpostlist.c
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  public postList?:Post[];
+  
 
-  constructor(private postService:ListpostService){
+  constructor(){
 
   }
 
   ngOnInit(): void {
-    this.postService.listPost().subscribe({next:(result)=>{
-    
 
-
-    },
-  error: (err)=>{
-
-
-  }
-  
-  
-  })
   }
 
  public posts:Post= {
@@ -52,7 +41,7 @@ export class HomeComponent implements OnInit {
         TEAM: "NONE",
         AUTHENTICATED: "NONE"
     },
-    liked: true,
+    liked: false,
     edit: false,
 }
 
